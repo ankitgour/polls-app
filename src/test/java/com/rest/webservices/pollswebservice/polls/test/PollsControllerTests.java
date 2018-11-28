@@ -52,7 +52,7 @@ public class PollsControllerTests {
     	Set<Choice> choice = new HashSet<Choice>(101);
     	poll.setChoices(choice);
         this.mockMvc.perform(get("/polls")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello Mock")));
+                .andExpect(content().string(containsString("Favourite")));
     }
 
 }
