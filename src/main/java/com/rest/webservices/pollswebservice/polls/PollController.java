@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -24,7 +26,7 @@ public class PollController {
 	        return new ResponseEntity<>(pollRepository.findAll(), HttpStatus.OK);
 	}
 	
-	@PostMapping("/jpa/polls")
+	@PostMapping("/create/polls")
 	public ResponseEntity<Object> createPolls(@Valid @RequestBody Poll poll) {
 		Poll savedPoll = pollRepository.save(poll);
 
@@ -33,6 +35,13 @@ public class PollController {
 
 		return ResponseEntity.created(location).build();
 
+	}
+	
+	@PutMapping("/update/polls")
+	public ResponseEntity<?> updatePoll(@RequestBody Poll poll, @PathVariable Long pollId) {
+	       
+	        pollRepository.save(poll);
+	        return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

@@ -46,13 +46,17 @@ public class PollsControllerTests {
     
     @Test
     public void pollsReturnMessageFromService() throws Exception {
+        this.mockMvc.perform(get("/polls")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("Favourite")));
+    }
+    
+    @Test
+    public void pollsCheck() throws Exception {
     	Poll poll = new Poll();
     	poll.setQuestion("Favourite programming language?");
     	poll.setId(102);
     	Set<Choice> choice = new HashSet<Choice>(101);
     	poll.setChoices(choice);
-        this.mockMvc.perform(get("/polls")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Favourite")));
     }
 
 }
