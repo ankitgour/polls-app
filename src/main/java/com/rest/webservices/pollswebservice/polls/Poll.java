@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
-import javax.validation.constraints.Past;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -33,7 +32,6 @@ public class Poll {
     private String question;
 
     
-    //@Past
     @CreationTimestamp
 	private Date published_at;
     
