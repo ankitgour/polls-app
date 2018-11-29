@@ -27,7 +27,7 @@ public class PollController {
 	}
 	
 	@PostMapping("/create/polls")
-	public ResponseEntity<Object> createPolls(@Valid @RequestBody Poll poll) {
+	public ResponseEntity<Object> createPolls(Poll poll) {
 		Poll savedPoll = pollRepository.save(poll);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedPoll.getId())

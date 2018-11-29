@@ -3,6 +3,7 @@ package com.rest.webservices.pollswebservice.polls;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,7 +12,7 @@ import javax.persistence.ManyToOne;
 public class Vote {
 
 	@Id
-    @GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="VOTE_ID")
     private Long id;
 

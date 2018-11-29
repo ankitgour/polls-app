@@ -8,11 +8,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.validation.constraints.Past;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Poll {
 	
 	@Id
-    @GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="POLL_ID")
 	@JsonIgnore
     private Integer id;
@@ -30,7 +33,8 @@ public class Poll {
     private String question;
 
     
-    @Past
+    //@Past
+    @CreationTimestamp
 	private Date published_at;
     
     @OneToMany(cascade=CascadeType.ALL)
